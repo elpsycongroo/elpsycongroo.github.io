@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Dominic&#39;s Blog">
 <meta property="og:description" content="本文系博主在Medium上找到，翻译并作出了一定修改和解读的文章。原文链接附于末尾。  创造区块链什么是区块链区块链是区块的链表。每一个区块有它自己的数字签名，包括前一个区块的数字签名，还有一些数据（比如交易信息）。 每一个区块不仅包含前一个区块的hash（数字签名），它自己的hash(从前一个计算而来)也包括在内。前一个区块的数据改变，hash也会变化，并且影响到后续所有的区块。通过计算和比较">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-19T15:45:56.786Z">
+<meta property="og:updated_time" content="2019-03-19T15:54:17.119Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用JAVA创造你的第一个区块链-01">
 <meta name="twitter:description" content="本文系博主在Medium上找到，翻译并作出了一定修改和解读的文章。原文链接附于末尾。  创造区块链什么是区块链区块链是区块的链表。每一个区块有它自己的数字签名，包括前一个区块的数字签名，还有一些数据（比如交易信息）。 每一个区块不仅包含前一个区块的hash（数字签名），它自己的hash(从前一个计算而来)也包括在内。前一个区块的数据改变，hash也会变化，并且影响到后续所有的区块。通过计算和比较">
@@ -429,7 +429,7 @@
                 
               
 
-              <time title="创建时间：2019-03-19 23:40:11 / 修改时间：23:45:56" itemprop="dateCreated datePublished" datetime="2019-03-19T23:40:11+08:00">2019-03-19</time>
+              <time title="创建时间：2019-03-19 23:40:11 / 修改时间：23:54:17" itemprop="dateCreated datePublished" datetime="2019-03-19T23:40:11+08:00">2019-03-19</time>
             
 
             
@@ -529,6 +529,7 @@
 <blockquote>
 <p>这也就是说，改变列表中的任何数据，就会改变签名，从而破坏这个区块链。</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="开始创造区块链"><a href="#开始创造区块链" class="headerlink" title="开始创造区块链"></a>开始创造区块链</h2><p>所以我们的区块类看起来就像是这个样子：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Block</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> String hash;</span><br><span class="line">	<span class="keyword">public</span> String previousHash;</span><br><span class="line">	<span class="keyword">private</span> String data; <span class="comment">//our data will be a simple message.</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">long</span> timeStamp; <span class="comment">//as number of milliseconds since 1/1/1970.</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//Block Constructor.</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Block</span><span class="params">(String data,String previousHash )</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.data = data;</span><br><span class="line">		<span class="keyword">this</span>.previousHash = previousHash;</span><br><span class="line">		<span class="keyword">this</span>.timeStamp = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样，我们的区块类包含了<code>hash</code>来保存数字签名，<code>previousHash</code>用来保存前一个区块的<code>hash</code>,<code>data</code> 用来保存区块的数据。</p>
@@ -745,7 +746,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
