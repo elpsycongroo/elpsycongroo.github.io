@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="title: 用JAVA创造你的第一个区块链-01date: 2019-03-19 23:40:11categories:  后端 JAVAtags: ARTS MEDIUM 技术 文摘    本文系博主在Medium上找到，翻译并作出了一定修改和解读的文章。原文链接附于末尾。  创造区块链什么是区块链区块链是区块的链表。每一个区块有它自己的数字签名，包括前一个区块的数字签名，还有一些数据（比如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dominic&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/2019/03/19/用JAVA创造你的第一个区块链-01/index.html">
+<meta property="og:site_name" content="Dominic&#39;s Blog">
+<meta property="og:description" content="title: 用JAVA创造你的第一个区块链-01date: 2019-03-19 23:40:11categories:  后端 JAVAtags: ARTS MEDIUM 技术 文摘    本文系博主在Medium上找到，翻译并作出了一定修改和解读的文章。原文链接附于末尾。  创造区块链什么是区块链区块链是区块的链表。每一个区块有它自己的数字签名，包括前一个区块的数字签名，还有一些数据（比如">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-19T15:43:47.747Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dominic&#39;s Blog">
+<meta name="twitter:description" content="title: 用JAVA创造你的第一个区块链-01date: 2019-03-19 23:40:11categories:  后端 JAVAtags: ARTS MEDIUM 技术 文摘    本文系博主在Medium上找到，翻译并作出了一定修改和解读的文章。原文链接附于末尾。  创造区块链什么是区块链区块链是区块的链表。每一个区块有它自己的数字签名，包括前一个区块的数字签名，还有一些数据（比如">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/19/用JAVA创造你的第一个区块链-01/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title> | Dominic's Blog</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?957f483bb7080b91689b40bd2017226a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/elpsycongroo" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dominic's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">10年後の私へ</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-something">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/something" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>零散的想法</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/elpsycongroo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/用JAVA创造你的第一个区块链-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dominic">
+      <meta itemprop="description" content="只要不止步不前就一定有所收获">
+      <meta itemprop="image" content="/images/banana.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dominic's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-19 23:40:11 / 修改时间：23:43:47" itemprop="dateCreated datePublished" datetime="2019-03-19T23:40:11+08:00">2019-03-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">6.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>title: 用JAVA创造你的第一个区块链-01<br>date: 2019-03-19 23:40:11<br>categories:</p>
+<ul>
+<li>后端</li>
+<li>JAVA<br>tags:</li>
+<li>ARTS</li>
+<li>MEDIUM</li>
+<li>技术</li>
+<li>文摘 </li>
+</ul>
+<blockquote>
+<p>本文系博主在Medium上找到，翻译并作出了一定修改和解读的文章。原文链接附于末尾。</p>
+</blockquote>
+<h1 id="创造区块链"><a href="#创造区块链" class="headerlink" title="创造区块链"></a>创造区块链</h1><h2 id="什么是区块链"><a href="#什么是区块链" class="headerlink" title="什么是区块链"></a>什么是区块链</h2><p>区块链是区块的链表。每一个区块有它自己的数字签名，包括前一个区块的数字签名，还有一些数据（比如交易信息）。</p>
+<p>每一个区块不仅包含前一个区块的hash（数字签名），它自己的hash(从前一个计算而来)也包括在内。前一个区块的数据改变，hash也会变化，并且影响到后续所有的区块。<strong>通过计算和比较区块的hash值可以让我们知道这个区块链是否合法。</strong></p>
+<blockquote>
+<p>这也就是说，改变列表中的任何数据，就会改变签名，从而破坏这个区块链。</p>
+</blockquote>
+<h2 id="开始创造区块链"><a href="#开始创造区块链" class="headerlink" title="开始创造区块链"></a>开始创造区块链</h2><p>所以我们的区块类看起来就像是这个样子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Block</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> String hash;</span><br><span class="line">	<span class="keyword">public</span> String previousHash;</span><br><span class="line">	<span class="keyword">private</span> String data; <span class="comment">//our data will be a simple message.</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">long</span> timeStamp; <span class="comment">//as number of milliseconds since 1/1/1970.</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//Block Constructor.</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Block</span><span class="params">(String data,String previousHash )</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.data = data;</span><br><span class="line">		<span class="keyword">this</span>.previousHash = previousHash;</span><br><span class="line">		<span class="keyword">this</span>.timeStamp = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，我们的区块类包含了<code>hash</code>来保存数字签名，<code>previousHash</code>用来保存前一个区块的<code>hash</code>,<code>data</code> 用来保存区块的数据。</p>
+<p>接下来用sha256来生成数字签名，假定我们已经写好了一个方法叫做<code>applySha256</code>，返回一个String类型，然后我们用时间戳、数据和前面一个区块的hash来生成这个区块的hash:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">calculateHash</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	String calculatedhash = StringUtil.applySha256( </span><br><span class="line">			previousHash +</span><br><span class="line">			Long.toString(timeStamp) +</span><br><span class="line">			data </span><br><span class="line">			);</span><br><span class="line">	<span class="keyword">return</span> calculatedhash;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后把这个方法加入到区块的构造方法中，这样我们就得到了区块。</p>
+<p>接下来把它们加入到一个ArrayList中形成区块链，一个很重要的问题就是<strong>校验区块链的合法性</strong>。</p>
+<p>根据我们之前的约定，一个区块的hash是和前一个区块的hash、区块的时间戳、区块的内容通过sha256加密而来的。因此一个校验程序需要从区块链头开始根据同样的计算方式校验hash。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Boolean <span class="title">isChainValid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Block currentBlock; </span><br><span class="line">	Block previousBlock;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//List&lt;Block&gt; blockChain = new ArrayList&lt;&gt;();</span></span><br><span class="line">	<span class="comment">//loop through blockchain to check hashes:</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; blockchain.size(); i++) &#123;</span><br><span class="line">		currentBlock = blockchain.get(i);</span><br><span class="line">		previousBlock = blockchain.get(i-<span class="number">1</span>);</span><br><span class="line">		<span class="comment">//compare registered hash and calculated hash:</span></span><br><span class="line">		<span class="keyword">if</span>(!currentBlock.hash.equals(currentBlock.calculateHash()) )&#123;</span><br><span class="line">			System.out.println(<span class="string">"Current Hashes not equal"</span>);			</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//compare previous hash and registered previous hash</span></span><br><span class="line">		<span class="keyword">if</span>(!previousBlock.hash.equals(currentBlock.previousHash) ) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Previous Hashes not equal"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>任意对区块链作出的改动都会返回false.</p>
+<p>比特币网络接受<strong>最长的合法区块链</strong>。为了防止某人通过篡改最原始的区块来直接形成新的更长的区块链，创造新的区块链需要<strong>大量的时间和算力</strong>，这意味着攻击者需要比其他人都拥有更多的算力。</p>
+<blockquote>
+<p>这也就是“Mining blocks”，挖矿。</p>
+</blockquote>
+<h2 id="开始挖矿！"><a href="#开始挖矿！" class="headerlink" title="开始挖矿！"></a>开始挖矿！</h2><p>我们要求矿工们尝试在区块的数据中加入不同的值，直到计算得到的hash满足以要求数目的0为开头。</p>
+<p>我们把要求0的数目，定义为难度(difficulty)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Block</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> String hash;</span><br><span class="line">	<span class="keyword">public</span> String previousHash; </span><br><span class="line">	<span class="keyword">private</span> String data; <span class="comment">//our data will be a simple message.</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">long</span> timeStamp; <span class="comment">//as number of milliseconds since 1/1/1970.</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> nonce;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//Block Constructor.  </span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Block</span><span class="params">(String data,String previousHash )</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.data = data;</span><br><span class="line">		<span class="keyword">this</span>.previousHash = previousHash;</span><br><span class="line">		<span class="keyword">this</span>.timeStamp = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">this</span>.hash = calculateHash(); <span class="comment">//Making sure we do this after we set the other values.</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//Calculate new hash based on blocks contents</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">calculateHash</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String calculatedhash = StringUtil.applySha256( </span><br><span class="line">				previousHash +</span><br><span class="line">				Long.toString(timeStamp) +</span><br><span class="line">				Integer.toString(nonce) + </span><br><span class="line">				data </span><br><span class="line">				);</span><br><span class="line">		<span class="keyword">return</span> calculatedhash;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mineBlock</span><span class="params">(<span class="keyword">int</span> difficulty)</span> </span>&#123;</span><br><span class="line">		String target = <span class="keyword">new</span> String(<span class="keyword">new</span> <span class="keyword">char</span>[difficulty]).replace(<span class="string">'\0'</span>, <span class="string">'0'</span>); <span class="comment">//Create a string with difficulty * "0" </span></span><br><span class="line">		<span class="keyword">while</span>(!hash.substring( <span class="number">0</span>, difficulty).equals(target)) &#123;</span><br><span class="line">			nonce ++;</span><br><span class="line">			hash = calculateHash();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"Block Mined!!! : "</span> + hash);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>mineBlock()</code>方法接受一个int型的参数<code>difficulty</code>，这也就是hash值必须有的0开头的数目。这个数字不宜过低，我们将他定为5.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> com.google.gson.GsonBuilder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NoobChain</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;Block&gt; blockchain = <span class="keyword">new</span> ArrayList&lt;Block&gt;();</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> difficulty = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;	</span><br><span class="line">		<span class="comment">//add our blocks to the blockchain ArrayList:</span></span><br><span class="line">		</span><br><span class="line">		blockchain.add(<span class="keyword">new</span> Block(<span class="string">"Hi im the first block"</span>, <span class="string">"0"</span>));</span><br><span class="line">		System.out.println(<span class="string">"Trying to Mine block 1... "</span>);</span><br><span class="line">		blockchain.get(<span class="number">0</span>).mineBlock(difficulty);</span><br><span class="line">		</span><br><span class="line">		blockchain.add(<span class="keyword">new</span> Block(<span class="string">"Yo im the second block"</span>,blockchain.get(blockchain.size()-<span class="number">1</span>).hash));</span><br><span class="line">		System.out.println(<span class="string">"Trying to Mine block 2... "</span>);</span><br><span class="line">		blockchain.get(<span class="number">1</span>).mineBlock(difficulty);</span><br><span class="line">		</span><br><span class="line">		blockchain.add(<span class="keyword">new</span> Block(<span class="string">"Hey im the third block"</span>,blockchain.get(blockchain.size()-<span class="number">1</span>).hash));</span><br><span class="line">		System.out.println(<span class="string">"Trying to Mine block 3... "</span>);</span><br><span class="line">		blockchain.get(<span class="number">2</span>).mineBlock(difficulty);	</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"\nBlockchain is Valid: "</span> + isChainValid());</span><br><span class="line">		</span><br><span class="line">		String blockchainJson = <span class="keyword">new</span> GsonBuilder().setPrettyPrinting().create().toJson(blockchain);</span><br><span class="line">		System.out.println(<span class="string">"\nThe block chain: "</span>);</span><br><span class="line">		System.out.println(blockchainJson);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Boolean <span class="title">isChainValid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Block currentBlock; </span><br><span class="line">		Block previousBlock;</span><br><span class="line">		String hashTarget = <span class="keyword">new</span> String(<span class="keyword">new</span> <span class="keyword">char</span>[difficulty]).replace(<span class="string">'\0'</span>, <span class="string">'0'</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//loop through blockchain to check hashes:</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; blockchain.size(); i++) &#123;</span><br><span class="line">			currentBlock = blockchain.get(i);</span><br><span class="line">			previousBlock = blockchain.get(i-<span class="number">1</span>);</span><br><span class="line">			<span class="comment">//compare registered hash and calculated hash:</span></span><br><span class="line">			<span class="keyword">if</span>(!currentBlock.hash.equals(currentBlock.calculateHash()) )&#123;</span><br><span class="line">				System.out.println(<span class="string">"Current Hashes not equal"</span>);			</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//compare previous hash and registered previous hash</span></span><br><span class="line">			<span class="keyword">if</span>(!previousBlock.hash.equals(currentBlock.previousHash) ) &#123;</span><br><span class="line">				System.out.println(<span class="string">"Previous Hashes not equal"</span>);</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//check if hash is solved</span></span><br><span class="line">			<span class="keyword">if</span>(!currentBlock.hash.substring( <span class="number">0</span>, difficulty).equals(hashTarget)) &#123;</span><br><span class="line">				System.out.println(<span class="string">"This block hasn't been mined"</span>);</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>挖一个币需要一定的时间（大概3秒）。</p>
+<p>如果一个人要攻击你的区块链系统：</p>
+<ol>
+<li>区块链可能不合法</li>
+<li>他们可能不能创造出更长的区块链</li>
+<li>你网络上最诚实的区块链在最长链上将有时间优势。</li>
+</ol>
+<p><strong>一个伪造的区块链将不可能赶上比它长且合法的区块链</strong>。除非攻击者具有该链一半以上的算力。</p>
+<p>现在，你的区块链：</p>
+<ol>
+<li>由存储了数据的区块组成。</li>
+<li>通过数字签名链接。</li>
+<li>需要一定量的时间去产生新的区块。</li>
+<li>可以被检查到是不是合法且未被修改过的。</li>
+</ol>
+<blockquote>
+<p>区块链现在已经成型了！接下来就应该想到交易、钱包和签名的问题了。</p>
+</blockquote>
+<p>TO BE CONTINUED…</p>
+<blockquote>
+<p>原文发表于： <a href="https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa" target="_blank" rel="noopener">https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/18/SpringBoot-Mybatis-显示sql的配置方式/" rel="next" title="SpringBoot + Mybatis 显示sql的配置方式">
+                <i class="fa fa-chevron-left"></i> SpringBoot + Mybatis 显示sql的配置方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/banana.png" alt="Dominic">
+            
+              <p class="site-author-name" itemprop="name">Dominic</p>
+              <div class="site-description motion-element" itemprop="description">只要不止步不前就一定有所收获</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/elpsycongroo" title="GitHub &rarr; https://github.com/elpsycongroo" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:dominicpoi@foxmail.com" title="E-Mail &rarr; mailto:dominicpoi@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/u/3247616760" title="Weibo &rarr; https://weibo.com/u/3247616760" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创造区块链"><span class="nav-number">1.</span> <span class="nav-text">创造区块链</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是区块链"><span class="nav-number">1.1.</span> <span class="nav-text">什么是区块链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始创造区块链"><span class="nav-number">1.2.</span> <span class="nav-text">开始创造区块链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始挖矿！"><span class="nav-number">1.3.</span> <span class="nav-text">开始挖矿！</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dominic</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">9k</span>
+  
+
+  
+</div>
+
+
+  <div class="powered-by">
+  由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+
+
+
+  <div class="footer-custom">
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><br><i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">本站访客数:<span id="busuanzi_value_site_uv"></span></span></div>
+
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2019,3,18");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

@@ -385,6 +385,235 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/用JAVA创造你的第一个区块链-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dominic">
+      <meta itemprop="description" content="只要不止步不前就一定有所收获">
+      <meta itemprop="image" content="/images/banana.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dominic's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/19/用JAVA创造你的第一个区块链-01/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-19 23:40:11 / 修改时间：23:43:47" itemprop="dateCreated datePublished" datetime="2019-03-19T23:40:11+08:00">2019-03-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">6.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>title: 用JAVA创造你的第一个区块链-01<br>date: 2019-03-19 23:40:11<br>categories:</p>
+<ul>
+<li>后端</li>
+<li>JAVA<br>tags:</li>
+<li>ARTS</li>
+<li>MEDIUM</li>
+<li>技术</li>
+<li>文摘 </li>
+</ul>
+<blockquote>
+<p>本文系博主在Medium上找到，翻译并作出了一定修改和解读的文章。原文链接附于末尾。</p>
+</blockquote>
+<h1 id="创造区块链"><a href="#创造区块链" class="headerlink" title="创造区块链"></a>创造区块链</h1><h2 id="什么是区块链"><a href="#什么是区块链" class="headerlink" title="什么是区块链"></a>什么是区块链</h2><p>区块链是区块的链表。每一个区块有它自己的数字签名，包括前一个区块的数字签名，还有一些数据（比如交易信息）。</p>
+<p>每一个区块不仅包含前一个区块的hash（数字签名），它自己的hash(从前一个计算而来)也包括在内。前一个区块的数据改变，hash也会变化，并且影响到后续所有的区块。<strong>通过计算和比较区块的hash值可以让我们知道这个区块链是否合法。</strong></p>
+<blockquote>
+<p>这也就是说，改变列表中的任何数据，就会改变签名，从而破坏这个区块链。</p>
+</blockquote>
+<h2 id="开始创造区块链"><a href="#开始创造区块链" class="headerlink" title="开始创造区块链"></a>开始创造区块链</h2><p>所以我们的区块类看起来就像是这个样子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Block</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> String hash;</span><br><span class="line">	<span class="keyword">public</span> String previousHash;</span><br><span class="line">	<span class="keyword">private</span> String data; <span class="comment">//our data will be a simple message.</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">long</span> timeStamp; <span class="comment">//as number of milliseconds since 1/1/1970.</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//Block Constructor.</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Block</span><span class="params">(String data,String previousHash )</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.data = data;</span><br><span class="line">		<span class="keyword">this</span>.previousHash = previousHash;</span><br><span class="line">		<span class="keyword">this</span>.timeStamp = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，我们的区块类包含了<code>hash</code>来保存数字签名，<code>previousHash</code>用来保存前一个区块的<code>hash</code>,<code>data</code> 用来保存区块的数据。</p>
+<p>接下来用sha256来生成数字签名，假定我们已经写好了一个方法叫做<code>applySha256</code>，返回一个String类型，然后我们用时间戳、数据和前面一个区块的hash来生成这个区块的hash:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">calculateHash</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	String calculatedhash = StringUtil.applySha256( </span><br><span class="line">			previousHash +</span><br><span class="line">			Long.toString(timeStamp) +</span><br><span class="line">			data </span><br><span class="line">			);</span><br><span class="line">	<span class="keyword">return</span> calculatedhash;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后把这个方法加入到区块的构造方法中，这样我们就得到了区块。</p>
+<p>接下来把它们加入到一个ArrayList中形成区块链，一个很重要的问题就是<strong>校验区块链的合法性</strong>。</p>
+<p>根据我们之前的约定，一个区块的hash是和前一个区块的hash、区块的时间戳、区块的内容通过sha256加密而来的。因此一个校验程序需要从区块链头开始根据同样的计算方式校验hash。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Boolean <span class="title">isChainValid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Block currentBlock; </span><br><span class="line">	Block previousBlock;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//List&lt;Block&gt; blockChain = new ArrayList&lt;&gt;();</span></span><br><span class="line">	<span class="comment">//loop through blockchain to check hashes:</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; blockchain.size(); i++) &#123;</span><br><span class="line">		currentBlock = blockchain.get(i);</span><br><span class="line">		previousBlock = blockchain.get(i-<span class="number">1</span>);</span><br><span class="line">		<span class="comment">//compare registered hash and calculated hash:</span></span><br><span class="line">		<span class="keyword">if</span>(!currentBlock.hash.equals(currentBlock.calculateHash()) )&#123;</span><br><span class="line">			System.out.println(<span class="string">"Current Hashes not equal"</span>);			</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//compare previous hash and registered previous hash</span></span><br><span class="line">		<span class="keyword">if</span>(!previousBlock.hash.equals(currentBlock.previousHash) ) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Previous Hashes not equal"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>任意对区块链作出的改动都会返回false.</p>
+<p>比特币网络接受<strong>最长的合法区块链</strong>。为了防止某人通过篡改最原始的区块来直接形成新的更长的区块链，创造新的区块链需要<strong>大量的时间和算力</strong>，这意味着攻击者需要比其他人都拥有更多的算力。</p>
+<blockquote>
+<p>这也就是“Mining blocks”，挖矿。</p>
+</blockquote>
+<h2 id="开始挖矿！"><a href="#开始挖矿！" class="headerlink" title="开始挖矿！"></a>开始挖矿！</h2><p>我们要求矿工们尝试在区块的数据中加入不同的值，直到计算得到的hash满足以要求数目的0为开头。</p>
+<p>我们把要求0的数目，定义为难度(difficulty)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Block</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> String hash;</span><br><span class="line">	<span class="keyword">public</span> String previousHash; </span><br><span class="line">	<span class="keyword">private</span> String data; <span class="comment">//our data will be a simple message.</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">long</span> timeStamp; <span class="comment">//as number of milliseconds since 1/1/1970.</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> nonce;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//Block Constructor.  </span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Block</span><span class="params">(String data,String previousHash )</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.data = data;</span><br><span class="line">		<span class="keyword">this</span>.previousHash = previousHash;</span><br><span class="line">		<span class="keyword">this</span>.timeStamp = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">this</span>.hash = calculateHash(); <span class="comment">//Making sure we do this after we set the other values.</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//Calculate new hash based on blocks contents</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">calculateHash</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String calculatedhash = StringUtil.applySha256( </span><br><span class="line">				previousHash +</span><br><span class="line">				Long.toString(timeStamp) +</span><br><span class="line">				Integer.toString(nonce) + </span><br><span class="line">				data </span><br><span class="line">				);</span><br><span class="line">		<span class="keyword">return</span> calculatedhash;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mineBlock</span><span class="params">(<span class="keyword">int</span> difficulty)</span> </span>&#123;</span><br><span class="line">		String target = <span class="keyword">new</span> String(<span class="keyword">new</span> <span class="keyword">char</span>[difficulty]).replace(<span class="string">'\0'</span>, <span class="string">'0'</span>); <span class="comment">//Create a string with difficulty * "0" </span></span><br><span class="line">		<span class="keyword">while</span>(!hash.substring( <span class="number">0</span>, difficulty).equals(target)) &#123;</span><br><span class="line">			nonce ++;</span><br><span class="line">			hash = calculateHash();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"Block Mined!!! : "</span> + hash);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>mineBlock()</code>方法接受一个int型的参数<code>difficulty</code>，这也就是hash值必须有的0开头的数目。这个数字不宜过低，我们将他定为5.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> com.google.gson.GsonBuilder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NoobChain</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;Block&gt; blockchain = <span class="keyword">new</span> ArrayList&lt;Block&gt;();</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> difficulty = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;	</span><br><span class="line">		<span class="comment">//add our blocks to the blockchain ArrayList:</span></span><br><span class="line">		</span><br><span class="line">		blockchain.add(<span class="keyword">new</span> Block(<span class="string">"Hi im the first block"</span>, <span class="string">"0"</span>));</span><br><span class="line">		System.out.println(<span class="string">"Trying to Mine block 1... "</span>);</span><br><span class="line">		blockchain.get(<span class="number">0</span>).mineBlock(difficulty);</span><br><span class="line">		</span><br><span class="line">		blockchain.add(<span class="keyword">new</span> Block(<span class="string">"Yo im the second block"</span>,blockchain.get(blockchain.size()-<span class="number">1</span>).hash));</span><br><span class="line">		System.out.println(<span class="string">"Trying to Mine block 2... "</span>);</span><br><span class="line">		blockchain.get(<span class="number">1</span>).mineBlock(difficulty);</span><br><span class="line">		</span><br><span class="line">		blockchain.add(<span class="keyword">new</span> Block(<span class="string">"Hey im the third block"</span>,blockchain.get(blockchain.size()-<span class="number">1</span>).hash));</span><br><span class="line">		System.out.println(<span class="string">"Trying to Mine block 3... "</span>);</span><br><span class="line">		blockchain.get(<span class="number">2</span>).mineBlock(difficulty);	</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"\nBlockchain is Valid: "</span> + isChainValid());</span><br><span class="line">		</span><br><span class="line">		String blockchainJson = <span class="keyword">new</span> GsonBuilder().setPrettyPrinting().create().toJson(blockchain);</span><br><span class="line">		System.out.println(<span class="string">"\nThe block chain: "</span>);</span><br><span class="line">		System.out.println(blockchainJson);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Boolean <span class="title">isChainValid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Block currentBlock; </span><br><span class="line">		Block previousBlock;</span><br><span class="line">		String hashTarget = <span class="keyword">new</span> String(<span class="keyword">new</span> <span class="keyword">char</span>[difficulty]).replace(<span class="string">'\0'</span>, <span class="string">'0'</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//loop through blockchain to check hashes:</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i &lt; blockchain.size(); i++) &#123;</span><br><span class="line">			currentBlock = blockchain.get(i);</span><br><span class="line">			previousBlock = blockchain.get(i-<span class="number">1</span>);</span><br><span class="line">			<span class="comment">//compare registered hash and calculated hash:</span></span><br><span class="line">			<span class="keyword">if</span>(!currentBlock.hash.equals(currentBlock.calculateHash()) )&#123;</span><br><span class="line">				System.out.println(<span class="string">"Current Hashes not equal"</span>);			</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//compare previous hash and registered previous hash</span></span><br><span class="line">			<span class="keyword">if</span>(!previousBlock.hash.equals(currentBlock.previousHash) ) &#123;</span><br><span class="line">				System.out.println(<span class="string">"Previous Hashes not equal"</span>);</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//check if hash is solved</span></span><br><span class="line">			<span class="keyword">if</span>(!currentBlock.hash.substring( <span class="number">0</span>, difficulty).equals(hashTarget)) &#123;</span><br><span class="line">				System.out.println(<span class="string">"This block hasn't been mined"</span>);</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>挖一个币需要一定的时间（大概3秒）。</p>
+<p>如果一个人要攻击你的区块链系统：</p>
+<ol>
+<li>区块链可能不合法</li>
+<li>他们可能不能创造出更长的区块链</li>
+<li>你网络上最诚实的区块链在最长链上将有时间优势。</li>
+</ol>
+<p><strong>一个伪造的区块链将不可能赶上比它长且合法的区块链</strong>。除非攻击者具有该链一半以上的算力。</p>
+<p>现在，你的区块链：</p>
+<ol>
+<li>由存储了数据的区块组成。</li>
+<li>通过数字签名链接。</li>
+<li>需要一定量的时间去产生新的区块。</li>
+<li>可以被检查到是不是合法且未被修改过的。</li>
+</ol>
+<blockquote>
+<p>区块链现在已经成型了！接下来就应该想到交易、钱包和签名的问题了。</p>
+</blockquote>
+<p>TO BE CONTINUED…</p>
+<blockquote>
+<p>原文发表于： <a href="https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa" target="_blank" rel="noopener">https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/SpringBoot-Mybatis-显示sql的配置方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1206,7 +1435,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1344,7 +1573,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">3k</span>
+    <span title="站点总字数">9k</span>
   
 
   
