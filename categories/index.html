@@ -41,7 +41,6 @@
 
 
 
-
   
   
   <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5">
@@ -473,6 +472,10 @@
           
 
   
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
 
 
 
@@ -824,6 +827,35 @@ setInterval("createtime()",250);
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '1a4c44d06ec47a003384',
+    clientSecret: 'a044d059d8f2bc7a882b0847cee2c73ab6546aaa',
+    repo: 'elpsycongroo.github.io',
+    owner: 'elpsycongroo',
+    admin: ['elpsycongroo'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
 
   
 

@@ -41,7 +41,6 @@
 
 
 
-
   
   
   <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5">
@@ -105,7 +104,7 @@
 
 
   <meta name="description" content="DescriptionGiven a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x. You should preserve the original relative order of the nodes in">
-<meta name="keywords" content="ARTS,LeetCode">
+<meta name="keywords" content="LeetCode,ARTS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 86 Partition List">
 <meta property="og:url" content="http://yoursite.com/2019/03/20/LeetCode-86-Partition-List/index.html">
@@ -578,9 +577,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ARTS/" rel="tag"># ARTS</a>
-          
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/ARTS/" rel="tag"># ARTS</a>
           
         </div>
       
@@ -626,6 +625,10 @@
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
 
   
 
@@ -1005,6 +1008,35 @@ setInterval("createtime()",250);
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '1a4c44d06ec47a003384',
+    clientSecret: 'a044d059d8f2bc7a882b0847cee2c73ab6546aaa',
+    repo: 'elpsycongroo.github.io',
+    owner: 'elpsycongroo',
+    admin: ['elpsycongroo'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
 
   
 
